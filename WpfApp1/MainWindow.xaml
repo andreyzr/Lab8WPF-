@@ -5,22 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
     <Window.Resources>
-        <SolidColorBrush Color="Red" x:Key="redStyle"/>
-        <SolidColorBrush Color="Green" x:Key="greenStyle"/>
-        <col:ArrayList>
-            <sys:S
+        <col:ArrayList x:Key="colors">
+            <sys:String>Красный</sys:String>
+            <sys:String>Зеленый</sys:String>
+            <sys:String>Синий</sys:String>
         </col:ArrayList>
     </Window.Resources>
     <StackPanel>
-        <Button Content="Кнопка 1" Background="{StaticResource redStyle}"/>
+        <Button Content="Кнопка 1" Background="{StaticResource redStyle}" Click="Button_Click"/>
         <Button Content="Кнопка 2" Background="{StaticResource greenStyle}"/>
-        <Button Content="Кнопка 3" Background="{StaticResource redStyle}"/>
-        <Button Content="Кнопка 4"/>
-        <Button>
-            <StaticResource ResourceKey="greenStyle"/>
+        <Button Content="Кнопка 3" Background="{DynamicResource redStyle}"/>
+        <Button Content="Кнопка 4">
+            <Button.Background>
+                <StaticResource ResourceKey="greenStyle"/>
+            </Button.Background>
         </Button>
+        <ComboBox ItemsSource="{StaticResource colors}"/>
     </StackPanel>
 </Window>
